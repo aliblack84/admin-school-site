@@ -25,6 +25,14 @@
     font-family: 'maktab';
     src: url('./MaktabRita-Regular.ttf');
 }
+@font-face {
+    font-family: 'nas';
+    src: url('./Far_Decorative_Bold/Far_Decorative_Bold.ttf');
+}
+@font-face {
+    font-family: 'parvas';
+    src: url('./W_parvaz/W_parvaz.TTF');
+}
 
 * {
     font-family: 'gandom';

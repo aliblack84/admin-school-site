@@ -9,6 +9,16 @@ const routes = [
     name: "login",
     component: () => import("@/views/login.vue"),
   },
+  {
+    meta: {
+      title: "tables",
+    },
+    path: "/tables",
+    name: "tables",
+    component: () => import("@/views/TablesView.vue"),
+  },
+
+
 
 
 ];
