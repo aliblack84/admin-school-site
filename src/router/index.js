@@ -3,11 +3,11 @@ const routes = [
 
   {
     meta: {
-      title: "tables",
+      title: "login",
     },
     path: "/",
-    name: "tables",
-    component: () => import("@/views/TablesView.vue"),
+    name: "login",
+    component: () => import("@/views/login.vue"),
   },
 
 
