@@ -6,3 +6,25 @@
 @import "_progress.css";
 @import "_scrollbars.css";
 @import "_table.css";
+
+@font-face {
+    font-family: 'gandom';
+    src: url('./Gandom.ttf');
+}
+
+@font-face {
+    font-family: 'mj-f';
+    src: url('./mj_fonoon.ttf');
+}
+@font-face {
+    font-family: 'nast';
+    src: url('./IranNastaliq.ttf');
+}
+@font-face {
+    font-family: 'maktab';
+    src: url('./MaktabRita-Regular.ttf');
+}
+
+* {
+    font-family: 'gandom';
+}

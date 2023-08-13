@@ -8,7 +8,7 @@ export default [
 
   {
     to: "/",
-    label: "Tables",
+    label: "متقاضیان ثبت نام",
     icon: mdiTable,
   },
 

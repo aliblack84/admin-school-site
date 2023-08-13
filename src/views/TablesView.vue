@@ -13,7 +13,7 @@ import SectionTitleLineWithButton from "@/components/SectionTitleLineWithButton.
 <template>
   <LayoutAuthenticated>
     <SectionMain>
-      <SectionTitleLineWithButton :icon="mdiTableBorder" title="Tables" main>
+      <SectionTitleLineWithButton :icon="mdiTableBorder" title="لیست دانش آموزان" main>
 
       </SectionTitleLineWithButton>
    
