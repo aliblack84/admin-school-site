@@ -1,11 +1,9 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-
 const routes = [
-
 
   {
     meta: {
-      title: "Tables",
+      title: "tables",
     },
     path: "/",
     name: "tables",
