@@ -73,23 +73,15 @@ const checked = (isChecked, client) => {
 <template>
 
 
-  <div v-if="checkedRows.length" class="p-3 bg-gray-100/50 dark:bg-slate-800">
-    <span
-      v-for="checkedRow in checkedRows"
-      :key="checkedRow.id"
-      class="inline-block px-2 py-1 rounded-sm mr-2 text-sm bg-gray-100 dark:bg-slate-700"
-    >
-      {{ checkedRow.name }}
-    </span>
-  </div>
 
-  <table>
-    <thead>
-      <tr>
+
+  <table >
+    <thead >
+      <tr >
         <th v-if="checkable" />
-        <th>Name</th>
-        <th>national_code</th>
-        <th>Branch</th>
+        <th style="text-align: center ;">نام</th>
+        <th style="text-align: center;">کد ملی</th>
+        <th style="text-align: center">رشته</th>
 
         <th />
         <th />
@@ -99,23 +91,20 @@ const checked = (isChecked, client) => {
       <tr v-for="client in itemsPaginated" :key="client.id">
  
         <td class="border-b-0 lg:w-6 before:hidden">
-          <UserAvatar
-            :username="client.name"
-            class="w-24 h-24 mx-auto lg:w-6 lg:h-6"
-          />
+
         </td>
-        <td data-label="Name">
+        <td style="text-align: center;" data-label="نام">
           {{ client.name }}
         </td>
-        <td data-label="Company">
+        <td style="text-align: center;" data-label="کد ملی">
           {{ client.company }}
         </td>
-        <td data-label="City">
+        <td style="text-align: center;" data-label="رشته">
           {{ client.city }}
         </td>
   
 
-        <td class="before:hidden lg:w-1 whitespace-nowrap">
+        <td class="before:hidden  whitespace-nowrap">
           <BaseButtons type="justify-start lg:justify-end" no-wrap>
             <BaseButton
               color="info"
@@ -123,6 +112,7 @@ const checked = (isChecked, client) => {
               small
               @click="isModalActive = true"
             />
+            <div style="width: ;"></div>
             <BaseButton
               color="danger"
               :icon="mdiTrashCan"
@@ -134,7 +124,7 @@ const checked = (isChecked, client) => {
       </tr>
     </tbody>
   </table>
-  <div class="p-3 lg:px-6 border-t border-gray-100 dark:border-slate-800">
+  <div style="" class="p-3 lg:px-6 border-t border-gray-100 dark:border-slate-800 ">
     <BaseLevel>
       <BaseButtons>
         <BaseButton
@@ -151,3 +141,4 @@ const checked = (isChecked, client) => {
     </BaseLevel>
   </div>
 </template>
+

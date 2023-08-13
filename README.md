@@ -179,3 +179,5 @@ The issue list is reserved exclusively for bug reports and feature requests. Tha
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Vue.js 3](https://v3.vuejs.org/)
 - [Vite](https://vitejs.dev)
+
+
