@@ -1,9 +1,7 @@
 <script setup>
 import { computed, ref } from "vue";
 import { useMainStore } from "@/stores/main";
-import { mdiEye, mdiTrashCan } from "@mdi/js";
-import CardBoxModal from "@/components/CardBoxModal.vue";
-import TableCheckboxCell from "@/components/TableCheckboxCell.vue";
+import { mdiDownload, mdiEye, mdiTrashCan } from "@mdi/js";
 import BaseLevel from "@/components/BaseLevel.vue";
 import BaseButtons from "@/components/BaseButtons.vue";
 import BaseButton from "@/components/BaseButton.vue";
@@ -73,20 +71,7 @@ const checked = (isChecked, client) => {
 </script>
 
 <template>
-  <CardBoxModal v-model="isModalActive" title="Sample modal">
-    <p>Lorem ipsum dolor sit amet <b>adipiscing elit</b></p>
-    <p>This is sample modal</p>
-  </CardBoxModal>
 
-  <CardBoxModal
-    v-model="isModalDangerActive"
-    title="Please confirm"
-    button="danger"
-    has-cancel
-  >
-    <p>Lorem ipsum dolor sit amet <b>adipiscing elit</b></p>
-    <p>This is sample modal</p>
-  </CardBoxModal>
 
   <div v-if="checkedRows.length" class="p-3 bg-gray-100/50 dark:bg-slate-800">
     <span
@@ -102,21 +87,17 @@ const checked = (isChecked, client) => {
     <thead>
       <tr>
         <th v-if="checkable" />
-        <th />
         <th>Name</th>
-        <th>Company</th>
-        <th>City</th>
-        <th>Progress</th>
-        <th>Created</th>
+        <th>Foundation</th>
+        <th>Branch</th>
+
+        <th />
         <th />
       </tr>
     </thead>
     <tbody>
       <tr v-for="client in itemsPaginated" :key="client.id">
-        <TableCheckboxCell
-          v-if="checkable"
-          @checked="checked($event, client)"
-        />
+ 
         <td class="border-b-0 lg:w-6 before:hidden">
           <UserAvatar
             :username="client.name"
@@ -132,27 +113,13 @@ const checked = (isChecked, client) => {
         <td data-label="City">
           {{ client.city }}
         </td>
-        <td data-label="Progress" class="lg:w-32">
-          <progress
-            class="flex w-2/5 self-center lg:w-full"
-            max="100"
-            :value="client.progress"
-          >
-            {{ client.progress }}
-          </progress>
-        </td>
-        <td data-label="Created" class="lg:w-1 whitespace-nowrap">
-          <small
-            class="text-gray-500 dark:text-slate-400"
-            :title="client.created"
-            >{{ client.created }}</small
-          >
-        </td>
+  
+
         <td class="before:hidden lg:w-1 whitespace-nowrap">
           <BaseButtons type="justify-start lg:justify-end" no-wrap>
             <BaseButton
               color="info"
-              :icon="mdiEye"
+              :icon="mdiDownload"
               small
               @click="isModalActive = true"
             />

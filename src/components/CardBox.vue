@@ -1,7 +1,6 @@
 <script setup>
 import { computed, useSlots } from "vue";
 import CardBoxComponentBody from "@/components/CardBoxComponentBody.vue";
-import CardBoxComponentFooter from "@/components/CardBoxComponentFooter.vue";
 
 const props = defineProps({
   rounded: {
@@ -56,9 +55,7 @@ const submit = (event) => {
       <CardBoxComponentBody :no-padding="hasTable">
         <slot />
       </CardBoxComponentBody>
-      <CardBoxComponentFooter v-if="hasFooterSlot">
-        <slot name="footer" />
-      </CardBoxComponentFooter>
+
     </template>
   </component>
 </template>
