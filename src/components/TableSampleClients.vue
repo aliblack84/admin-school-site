@@ -1,11 +1,13 @@
 <script setup>
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useMainStore } from "@/stores/main";
 import { mdiDownload, mdiEye, mdiTrashCan } from "@mdi/js";
 import BaseLevel from "@/components/BaseLevel.vue";
 import BaseButtons from "@/components/BaseButtons.vue";
 import BaseButton from "@/components/BaseButton.vue";
 import UserAvatar from "@/components/UserAvatar.vue";
+import {get_students, download_excel, get_url} from '@/modules'
+import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
 
 defineProps({
   checkable: Boolean,
@@ -13,7 +15,7 @@ defineProps({
 
 const mainStore = useMainStore();
 
-const items = computed(() => mainStore.clients);
+const items = ref([]);
 
 const isModalActive = ref(false);
 
@@ -24,6 +26,27 @@ const perPage = ref(5);
 const currentPage = ref(0);
 
 const checkedRows = ref([]);
+
+onMounted(async () => {
+
+  const stds = await get_students()
+  items.value = []
+
+  for (let i = 0; i < stds.data.length; i++) {
+    const std = stds.data[i];
+    items.value.push({
+      name: std.split('-')[1] + ' ' + std.split('-')[2],
+      company: std.split('-')[0],
+      city: std.split('-')[3].split('.')[0]
+    })
+  }
+})
+
+const download = async (nCode) => {
+  const link = get_url('/student?nCode=' + nCode + '&' + 'xToken=' + localStorage.getItem('x-token'))
+
+  window.open(link)
+}
 
 const itemsPaginated = computed(() =>
   items.value.slice(
@@ -110,14 +133,7 @@ const checked = (isChecked, client) => {
               color="info"
               :icon="mdiDownload"
               small
-              @click="isModalActive = true"
-            />
-            <div style="width: ;"></div>
-            <BaseButton
-              color="danger"
-              :icon="mdiTrashCan"
-              small
-              @click="isModalDangerActive = true"
+              @click="download(client.company)"
             />
           </BaseButtons>
         </td>

@@ -55,7 +55,7 @@ const asideLgCloseClick = (event) => {
           <p style="font-family: 'nast'; font-size: 25px;">هنرستان نمونه دولتی امام خمینی (ره)</p>
 
         </div>
-        <p style="text-align: center; font-family: 'maktab'; font-size: 38px; line-height: 18px;" class="mb-8">درگاه مدیریت هنرستان</p>
+        <p style="text-align: center; font-family: 'maktab'; font-size: 38px; line-height: 18px;" class="mb-8">درگاه مدیریت </p>
               </div>
       <div
         :class="
