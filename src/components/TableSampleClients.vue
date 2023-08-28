@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref ,watch} from "vue";
 import { useMainStore } from "@/stores/main";
 import { mdiDownload, mdiEye, mdiTrashCan } from "@mdi/js";
 import BaseLevel from "@/components/BaseLevel.vue";
@@ -7,7 +7,7 @@ import BaseButtons from "@/components/BaseButtons.vue";
 import BaseButton from "@/components/BaseButton.vue";
 import UserAvatar from "@/components/UserAvatar.vue";
 import {get_students, download_excel, get_url} from '@/modules'
-import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
+import { DoughnutController } from "chart.js";
 
 defineProps({
   checkable: Boolean,
@@ -21,11 +21,26 @@ const isModalActive = ref(false);
 
 const isModalDangerActive = ref(false);
 
-const perPage = ref(5);
+const perPage = ref(10);
 
 const currentPage = ref(0);
 
+
 const checkedRows = ref([]);
+
+  const searchText = ref('')
+
+
+  const emitSearchText = (text) => {
+      emit('search', text) 
+    }
+
+const handleInput = (e) => {
+  searchText.value = e.stds.value
+      emitSearchText(searchText.value)}
+
+
+
 
 onMounted(async () => {
 
@@ -52,8 +67,13 @@ const itemsPaginated = computed(() =>
   items.value.slice(
     perPage.value * currentPage.value,
     perPage.value * (currentPage.value + 1)
-  )
+  ),
 );
+
+
+
+
+
 
 const numPages = computed(() => Math.ceil(items.value.length / perPage.value));
 
@@ -97,8 +117,14 @@ const checked = (isChecked, client) => {
 
 
 
-
+<!-- <input
+      type="text"
+      v-model="searchText"
+      placeholder="Search..."
+      @input="handleInput"
+    />   -->
   <table >
+    
     <thead >
       <tr >
         <th v-if="checkable" />
